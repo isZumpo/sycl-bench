@@ -77,6 +77,7 @@ public:
         std::vector<double> resultsSeconds;
         std::transform(timingResults.at(name).begin(), timingResults.at(name).end(), std::back_inserter(resultsSeconds),
             [](auto r) { return r.count() / 1.0e9; });
+        std::vector<double> resultsSecondsBeforeSorted = resultsSeconds; 
         std::sort(resultsSeconds.begin(), resultsSeconds.end());
 
         double mean = std::accumulate(resultsSeconds.begin(), resultsSeconds.end(), 0.0) /
@@ -104,9 +105,9 @@ public:
         // Emit individual samples as well
         std::stringstream samples;
         samples << "\"";
-        for(int i = 0; i < resultsSeconds.size(); ++i) {
-          samples << std::to_string(resultsSeconds[i]);
-          if(i != resultsSeconds.size() - 1) {
+        for(int i = 0; i < resultsSecondsBeforeSorted.size(); ++i) {
+          samples << std::to_string(resultsSecondsBeforeSorted[i]);
+          if(i != resultsSecondsBeforeSorted.size() - 1) {
             samples << " ";
           }
         }
