@@ -76,6 +76,7 @@ set(benchmarks
   runtime/matmulchain.cpp
   runtime/vector_addition.cpp
   polybench/2DConvolution.cpp
+  polybench/1mm.cpp
   polybench/2mm.cpp
   polybench/3DConvolution.cpp
   polybench/3mm.cpp
